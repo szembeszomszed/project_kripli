@@ -1,0 +1,19 @@
+#area {
+    margin: auto;
+    clear: both;
+    background-color: #000;
+    position: relative;
+    width: 800px;
+    height: 600px;
+
+}
+
+
+#player {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    /*background: url("../img/mozi.jpg") no-repeat center;
+    background-size: cover;*/
+}
