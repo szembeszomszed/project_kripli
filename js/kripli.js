@@ -8,34 +8,41 @@ var main = function() {
                 if ($("#player").position().left >= 10) {
                     $("#player").finish().animate({left: "-=10"});
                 }
-                getPosition($("#player"), $("#pinfo"));
                 break;
             // up arrow
             case 38:
                 if ($("#player").position().top >= 10) {
                     $("#player").finish().animate({top: "-=10"});
                 }
-                getPosition($("#player"), $("#pinfo"));
                 break;
             // right arrow
             case 39:
                 if ($("#player").position().left <= 740) {
                     $("#player").finish().animate({left: "+=10"});
                 }
-                getPosition($("#player"), $("#pinfo"));
                 break;
             // down arrow
             case 40:
                 if ($("#player").position().top <= 540) {
                     $("#player").finish().animate({top: "+=10"});
                 }
-                getPosition($("#player"), $("#pinfo"));
                 break;
         }
     });
 
-    // get position of element and put it to the screen
-    function getPosition(element, field) {
+    // get elements' position
+    function getPosition(element) {
+        var x = Math.round(element.position().left);
+        var y = Math.round(element.position().top);
+
+        return {
+            x: x,
+            y: y
+        }
+    }
+
+    // display elements' position
+    function displayPosition(element, field) {
         var x = Math.round(element.position().left);
         var y = Math.round(element.position().top);
         $(field).text("x:" + x + " y:" + y);
@@ -43,16 +50,13 @@ var main = function() {
 
     // things' moves
     function animateThis(targetElement, time) {
-        getPosition($("#thing1"), $("#t1info"));
-        getPosition($("#thing2"), $("#t2info"));
-        getPosition($("#thing3"), $("#t3info"));
-        getPosition($("#thing4"), $("#t4info"));
-        targetElement.animate({marginLeft: "+=770px"},
+
+        targetElement.animate({left: "+=770px"},
         {
             duration: time,
             complete: function() 
             {
-                targetElement.animate({marginLeft: "-=770px"},
+                targetElement.animate({left: "-=770px"},
                 {
                     duration: time,
                     complete: function() 
@@ -70,6 +74,43 @@ var main = function() {
     animateThis($('#thing3'), 1600);
     animateThis($('#thing4'), 1400);
 
+    setInterval(function(){
+        displayPosition($("#player"), $("#pinfo"));
+        displayPosition($("#thing1"), $("#t1info"));
+        displayPosition($("#thing2"), $("#t2info"));
+        displayPosition($("#thing3"), $("#t3info"));
+        displayPosition($("#thing4"), $("#t4info"));
+    }, 10);
+
+    setInterval(function() {
+        var playerPosition = getPosition($("#player"));
+        var playerX = playerPosition.x;
+        var playerY = playerPosition.y;
+        getPosition($("#thing1"));
+        var thing1Position = getPosition($("#thing1"));
+        var thing1X = thing1Position.x;
+        var thing1Y = thing1Position.y;
+
+        if (playerX == thing1X && playerY == thing1Y) {
+            alert("hopp");
+        }
+
+        /*
+        if (playerX == 100 || playerY == 100) {
+            alert("hopp!");
+        }
+        */
+        //console.log("playerX: " + playerX);
+        //console.log("playerY: " + playerY);
+        getPosition($("#thing2"));
+        getPosition($("#thing3"));
+        getPosition($("#thing4"));
+    }, 10);
+
+
+
+
+
 
     function calcDistance (obj1, obj2) {
         var x = $(obj1).offset().left - $(obj2).offset().left;
@@ -83,13 +124,7 @@ var main = function() {
 
     while ($("#player").position().top > 50 && $("#player").position().top < 150) {
         calcDistance($("#player"), $("#thing1"));
-    }
-  
-
-
-
-    
+    }    
 }
-
 
 $(document).ready(main);
