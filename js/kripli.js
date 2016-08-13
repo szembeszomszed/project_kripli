@@ -102,10 +102,22 @@ var main = function() {
         var thing4Position = getPosition($("#thing4"));
         var thing4X = thing4Position.x;
         var thing4Y = thing4Position.y;
-        if (playerX == thing1X && playerY == thing1Y) {
-            alert("hopp");
-        }
 
+        for (var i = 0; i < 50; i++) {
+            for (var j = 0; j < 50; j++) {
+                for (var k = 0; k < 30; k++) {
+                    for (var l = 0; l < 30; l++) {
+                        if (playerX + i == thing1X + k && playerY + j == thing1Y + l) {
+                            $("#thing1").css("background-color", "black");
+                            setInterval(function() {
+                                $("#thing1").css("background-color", "red");
+                            }, 800);
+                        }
+                    }
+                }
+            }
+        }
+        
     }, 10);
 
 
