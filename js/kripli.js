@@ -86,32 +86,30 @@ var main = function() {
         var playerPosition = getPosition($("#player"));
         var playerX = playerPosition.x;
         var playerY = playerPosition.y;
-        getPosition($("#thing1"));
+        
         var thing1Position = getPosition($("#thing1"));
         var thing1X = thing1Position.x;
         var thing1Y = thing1Position.y;
 
+        var thing2Position = getPosition($("#thing2"));
+        var thing2X = thing2Position.x;
+        var thing2Y = thing2Position.y;
+
+        var thing3Position = getPosition($("#thing3"));
+        var thing3X = thing3Position.x;
+        var thing3Y = thing3Position.y;
+        
+        var thing4Position = getPosition($("#thing4"));
+        var thing4X = thing4Position.x;
+        var thing4Y = thing4Position.y;
         if (playerX == thing1X && playerY == thing1Y) {
             alert("hopp");
         }
 
-        /*
-        if (playerX == 100 || playerY == 100) {
-            alert("hopp!");
-        }
-        */
-        //console.log("playerX: " + playerX);
-        //console.log("playerY: " + playerY);
-        getPosition($("#thing2"));
-        getPosition($("#thing3"));
-        getPosition($("#thing4"));
     }, 10);
 
 
-
-
-
-
+    /*
     function calcDistance (obj1, obj2) {
         var x = $(obj1).offset().left - $(obj2).offset().left;
         var y = $(obj1).offset().top - $(obj2).offset().top;
@@ -124,7 +122,8 @@ var main = function() {
 
     while ($("#player").position().top > 50 && $("#player").position().top < 150) {
         calcDistance($("#player"), $("#thing1"));
-    }    
+    } 
+    */   
 }
 
 $(document).ready(main);
