@@ -8,33 +8,34 @@ var main = function() {
                 if ($("#player").position().left >= 10) {
                     $("#player").finish().animate({left: "-=10"});
                 }
-                showPosition($("#player"), $("#pinfo"));
+                getPosition($("#player"), $("#pinfo"));
                 break;
             // up arrow
             case 38:
                 if ($("#player").position().top >= 10) {
                     $("#player").finish().animate({top: "-=10"});
                 }
-                showPosition($("#player"), $("#pinfo"));
+                getPosition($("#player"), $("#pinfo"));
                 break;
             // right arrow
             case 39:
                 if ($("#player").position().left <= 740) {
                     $("#player").finish().animate({left: "+=10"});
                 }
-                showPosition($("#player"), $("#pinfo"));
+                getPosition($("#player"), $("#pinfo"));
                 break;
             // down arrow
             case 40:
                 if ($("#player").position().top <= 540) {
                     $("#player").finish().animate({top: "+=10"});
                 }
-                showPosition($("#player"), $("#pinfo"));
+                getPosition($("#player"), $("#pinfo"));
                 break;
         }
     });
 
-    function showPosition(element, field) {
+    // get position of element and put it to the screen
+    function getPosition(element, field) {
         var x = Math.round(element.position().left);
         var y = Math.round(element.position().top);
         $(field).text("x:" + x + " y:" + y);
@@ -42,7 +43,10 @@ var main = function() {
 
     // things' moves
     function animateThis(targetElement, time) {
-
+        getPosition($("#thing1"), $("#t1info"));
+        getPosition($("#thing2"), $("#t2info"));
+        getPosition($("#thing3"), $("#t3info"));
+        getPosition($("#thing4"), $("#t4info"));
         targetElement.animate({marginLeft: "+=770px"},
         {
             duration: time,
@@ -54,7 +58,7 @@ var main = function() {
                     complete: function() 
                     {
                         animateThis(targetElement, time);
-                        showPosition($("#thing1"), $("#t1info"));
+                        
                     }
                 });
             }
