@@ -1,7 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#pinfo {
+    font-size: 10px;
+    color: #000;
+    right: 0%;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    white-space: pre-wrap;
+}
+
+#t1info {
+    font-size: 10px;
+    color: #000;
+    right: 0%;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    white-space: pre-wrap;
+    top: 20px;
+}
+
+#t2info {
+    font-size: 10px;
+    color: #000;
+    right: 0%;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    white-space: pre-wrap;
+    top: 40px;
+}
+
+#t3info {
+    font-size: 10px;
+    color: #000;
+    right: 0%;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    white-space: pre-wrap;
+    top: 60px;
+}
+
+#t4info {
+    font-size: 10px;
+    color: #000;
+    right: 0%;
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    white-space: pre-wrap;
+    top: 80px;
+}
+
 #area {
-    margin: auto;
+    padding: 0;
+    margin: 10px auto;
     clear: both;
-    background-color: #000;
+    background-color: #e1e1e1;
     position: relative;
     width: 800px;
     height: 600px;
@@ -10,10 +70,42 @@
 
 
 #player {
-    background-color: red;
-    width: 100px;
-    height: 100px;
+    background-color: purple;
+    width: 50px;
+    height: 50px;
     position: absolute;
     /*background: url("../img/mozi.jpg") no-repeat center;
     background-size: cover;*/
+}
+
+#thing1 {
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    top: 100px;
+    position: absolute;
+}
+
+#thing2 {
+    background-color: yellow;
+    width: 30px;
+    height: 30px;
+    top: 250px;
+    position: absolute;
+}
+
+#thing3 {
+    background-color: brown;
+    width: 30px;
+    height: 30px;
+    top: 380px;
+    position: absolute;
+}
+
+#thing4 {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    top: 520px;
+    position: absolute;
 }
