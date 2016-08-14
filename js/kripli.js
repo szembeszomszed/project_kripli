@@ -69,10 +69,10 @@ var main = function() {
         });        
     }
 
-    animateThis($('#thing1'), 2000);
-    animateThis($('#thing2'), 1800);
-    animateThis($('#thing3'), 1600);
-    animateThis($('#thing4'), 1400);
+    //animateThis($('#thing1'), 2000);
+    //animateThis($('#thing2'), 1800);
+    //animateThis($('#thing3'), 1600);
+    //animateThis($('#thing4'), 1400);
 
     setInterval(function(){
         displayPosition($("#player"), $("#pinfo"));
@@ -103,22 +103,79 @@ var main = function() {
         var thing4X = thing4Position.x;
         var thing4Y = thing4Position.y;
 
-        for (var i = 0; i < 50; i++) {
-            for (var j = 0; j < 50; j++) {
-                for (var k = 0; k < 30; k++) {
-                    for (var l = 0; l < 30; l++) {
-                        if (playerX + i == thing1X + k && playerY + j == thing1Y + l) {
-                            $("#thing1").css("background-color", "black");
-                            setInterval(function() {
-                                $("#thing1").css("background-color", "red");
-                            }, 800);
+        if (playerY >= 50 && playerY <= 130) {
+           console.log("in position"); 
+            for (var i = 0; i < 50; i++) {
+                for (var j = 0; j < 50; j++) {
+                    for (var k = 0; k < 30; k++) {
+                        for (var l = 0; l < 30; l++) {
+                            if (playerX + i == thing1X + k && playerY + j == thing1Y + l) {
+                                $("#thing1").css("background-color", "black");
+                                setInterval(function() {
+                                    $("#thing1").css("background-color", "red");
+                                }, 800);
+                            }
                         }
                     }
                 }
             }
-        }
+
+        } else if (playerY >= 200 && playerY <= 280)  {
+            console.log("in position"); 
+            for (var i = 0; i < 50; i++) {
+                for (var j = 0; j < 50; j++) {
+                    for (var k = 0; k < 30; k++) {
+                        for (var l = 0; l < 30; l++) {
+                            if (playerX + i == thing2X + k && playerY + j == thing2Y + l) {
+                                $("#thing2").css("background-color", "black");
+                                setInterval(function() {
+                                    $("#thing2").css("background-color", "yellow");
+                                }, 800);
+                            }
+                        }
+                    }
+                }
+            }
+
+        } else if (playerY >= 330 && playerY <= 410)  {
+            console.log("in position"); 
+            for (var i = 0; i < 50; i++) {
+                for (var j = 0; j < 50; j++) {
+                    for (var k = 0; k < 30; k++) {
+                        for (var l = 0; l < 30; l++) {
+                            if (playerX + i == thing3X + k && playerY + j == thing3Y + l) {
+                                $("#thing3").css("background-color", "black");
+                                setInterval(function() {
+                                    $("#thing3").css("background-color", "brown");
+                                }, 800);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }  else if (playerY >= 470 && playerY <= 550)  {
+            console.log("in position"); 
+            for (var i = 0; i < 50; i++) {
+                for (var j = 0; j < 50; j++) {
+                    for (var k = 0; k < 30; k++) {
+                        for (var l = 0; l < 30; l++) {
+                            if (playerX + i == thing4X + k && playerY + j == thing4Y + l) {
+                                $("#thing4").css("background-color", "black");
+                                setInterval(function() {
+                                    $("#thing4").css("background-color", "purple");
+                                }, 800);
+                            }
+                        }
+                    }
+                }
+            }
+            
+        } else {
+            console.log("out of position");
+        }   
         
-    }, 10);
+    }, 200);
 
 
     /*
