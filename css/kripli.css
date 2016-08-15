@@ -58,6 +58,71 @@ body {
     top: 65px;
 }
 
+#welcome {
+    width: 400px;
+    height: 500px;
+    border: solid 1px #000;
+    margin-left: 35%;
+    margin-top: 1%;
+    text-align: justify;
+    padding: 5px 10px;
+}
+
+#startbtn {
+    color: #009933;
+    background-color: #e6ffee;
+    transition: color 1s, background 2s;
+    margin-left: 40%;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#startbtn:hover {
+    color: #fff;
+    background-color: #009933;
+    transition: color 1s, background 2s;
+}
+
+#startbtn:focus {
+    outline: 0;
+    color: #fff;
+    background-color: #009933;
+}
+
+#messagebox {
+    width: 500px;
+    height: 300px;
+    border: solid 1px #000;
+    margin-left: 35%;
+    margin-top: 1%;
+    text-align: center;
+    padding: 20px 20px;
+    display: none;
+}
+
+#nextroundbtn {
+    color: #009933;
+    background-color: #e6ffee;
+    transition: color 1s, background 2s;
+    margin-left: 40%;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;    
+}
+
+#nextroundbtn:hover {
+    color: #fff;
+    background-color: #009933;
+    transition: color 1s, background 2s;
+}
+
+#nextroundbtn:focus {
+    outline: 0;
+    color: #fff;
+    background-color: #009933;
+}
+
 #area {
     padding: 0;
     margin: 10px auto;
@@ -66,11 +131,24 @@ body {
     position: relative;
     width: 800px;
     height: 600px;
+    display: none;
+
+}
+
+#level2 {
+    padding: 0;
+    margin: 10px auto;
+    clear: both;
+    background-color: #e1e1e1;
+    position: relative;
+    width: 800px;
+    height: 600px;
+    display: none;
 
 }
 
 
-#player {
+.player {
     background-color: purple;
     width: 50px;
     height: 50px;
@@ -86,6 +164,7 @@ body {
     height: 30px;
     top: 100px;
     position: absolute;
+    display: none;
 }
 
 #thing2 {
@@ -94,6 +173,7 @@ body {
     height: 30px;
     top: 250px;
     position: absolute;
+    display: none;
 }
 
 #thing3 {
@@ -102,6 +182,7 @@ body {
     height: 30px;
     top: 380px;
     position: absolute;
+    display: none;
 }
 
 #thing4 {
@@ -109,5 +190,15 @@ body {
     width: 30px;
     height: 30px;
     top: 520px;
+    position: absolute;
+    display: none;
+}
+
+#finish {
+    background-color: orange;
+    width: 50px;
+    height: 50px;
+    top: 550px;
+    left: 750px;
     position: absolute;
 }
