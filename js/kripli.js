@@ -214,10 +214,94 @@ var main = function() {
      
     }
 
+    function contactChecks() {
+
+        var finishCheckInterval = setInterval(function() {
+
+            if (!isFinished()) {
+
+                isFinished();
+
+            } else {
+
+                clearInterval(finishCheckInterval);
+                console.log("finishCheckInterval cleared");
+                clearInterval(crashCheckInterval);
+                console.log("crashCheckInterval cleared");
+                $("#area").hide();
+            
+                $("#messagebox").show();
+                $("#message").text("Brávó!");
+                $("#complevel").text("Teljesített szint: " + level + ".");
+                $("#remlives").text("Még " + lives + " életed maradt.");
+                level++;
+                console.log("level: " + level);
+
+                $("#nextbtn").click(function() {
+                    $("#messagebox").hide();
+                    levelChoice();
+     
+                })
+            }
+
+        }, 200);
+
+        var crashCheckInterval = setInterval(function() {
+
+            if (!isCrashed()) {
+
+                isCrashed();
+
+            } else {
+
+                clearInterval(finishCheckInterval);
+                console.log("finishCheckInterval cleared");
+                clearInterval(crashCheckInterval);
+                console.log("crashCheckInterval cleared");
+                $("#area").hide();
+
+                $("#messagebox").show();
+                $("#message").text("Jaj!");
+                console.log("level: " + level);
+                lives--;
+                console.log("lives: " + lives);
+
+                if (lives > 0) {
+
+                    $("#complevel").text("");
+                    $("#remlives").text("Még " + lives + " életed maradt.");                   
+
+                    $("#nextbtn").click(function() {
+                    $("#messagebox").hide();
+                    levelChoice();     
+                    });
+                
+                } else {
+
+                    $("#complevel").text("");
+                    $("#remlives").text("Nem maradt több életed, de próbáld meg újra!");
+
+                    $("#nextbtn").click(function() {
+                    $("#messagebox").hide();
+                    level = 1;
+                    lives = 3;
+                    console.log("level: " + level);
+                    console.log("lives: " + lives);
+                    levelChoice(); 
+                    });
+                }
+
+            }
+            
+        }, 50);
+
+    }
+
     function levelChoice() {
 
         switch(level) {
-            case 1: 
+            case 1:
+                console.log("in switch case 1"); 
                 $("#area").show();
                 $("#player").show();
                 $("#player").css({
@@ -225,7 +309,30 @@ var main = function() {
                     'top' : '0px',
                     /*'background-color' : 'red'*/
                 });
+
                 $("#finish").show();
+
+                if ($("#thing1").is(':visible')) {
+                    $("#thing1").hide();
+                }
+
+                if ($("#thing3").is(':visible')) {
+                    $("#thing3").hide();
+                }
+
+                if ($("#thing4").is(':visible')) {
+                    $("#thing4").hide();
+                }
+
+                if ($("#thing5").is(':visible')) {
+                    $("#thing5").hide();
+                }
+
+                if ($("#thing6").is(':visible')) {
+                    $("#thing6").hide();
+                }
+
+
                 $("#thing2").show();
                     /*.css({
                     'left' : '0px',
@@ -236,69 +343,12 @@ var main = function() {
                     animateThis($("#thing2"), 2000);
                 }
 
-                var finishCheckInterval = setInterval(function() {
-        
-                    if (!isFinished()) {
-
-                        isFinished();
-
-                    } else {
-
-                        clearInterval(finishCheckInterval);
-                        console.log("finishCheckInterval cleared");
-                        clearInterval(crashCheckInterval);
-                        console.log("crashCheckInterval cleared");
-                        $("#area").hide();
-                    
-                        $("#messagebox").show();
-                        $("#message").text("Brávó!");
-                        $("#complevel").text("Teljesített szint: " + level + ".");
-                        $("#remlives").text("Még " + lives + " életed maradt.");
-                        level++;
-                        console.log("level: " + level);
-
-                        $("#nextbtn").click(function() {
-                            $("#messagebox").hide();
-                            levelChoice();
-             
-                        })
-                    }
-
-                }, 200);
-
-                var crashCheckInterval = setInterval(function() {
-
-                    if (!isCrashed()) {
-
-                        isCrashed();
-
-                    } else {
-
-                        clearInterval(finishCheckInterval);
-                        console.log("finishCheckInterval cleared");
-                        clearInterval(crashCheckInterval);
-                        console.log("crashCheckInterval cleared");
-                        $("#area").hide();
-
-                        $("#messagebox").show();
-                        $("#message").text("Jaj!");
-                        lives--;
-                        console.log("lives: " + lives);
-                        $("#remlives").text("Még " + lives + " életed maradt.");
-
-                        $("#nextbtn").click(function() {
-                        $("#messagebox").hide();
-                        levelChoice();
-             
-                        })
-
-                    }
-                    
-                }, 200);
+                contactChecks();
 
                 break;
                 
             case 2:
+                console.log("in switch case 2"); 
                 $("#area").show();
                 $("#player").show();
                 $("#player").css({
@@ -316,6 +366,37 @@ var main = function() {
                 if (!$("#thing3").is(':animated')) {
                     animateThis($("#thing3"), 1500);
                 }
+
+                contactChecks();
+
+                break;
+
+            case 3:
+                console.log("in switch case 3"); 
+                $("#area").show();
+                $("#player").show();
+                $("#player").css({
+                    'left' : '0px',
+                    'top' : '0px',
+                });
+                $("#finish").show();
+
+                $("#thing1").show();
+                if (!$("#thing1").is(':animated')) {
+                    animateThis($("#thing1"), 2000);
+                }
+
+                $("#thing2").show();
+                if (!$("#thing2").is(':animated')) {
+                    animateThis($("#thing2"), 2000);
+                }
+
+                $("#thing3").show();
+                if (!$("#thing3").is(':animated')) {
+                    animateThis($("#thing3"), 1500);
+                }
+
+                contactChecks();
 
                 break;
 
