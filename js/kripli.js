@@ -226,18 +226,98 @@ var main = function() {
                     /*'background-color' : 'red'*/
                 });
                 $("#finish").show();
-                $("#thing2").show()
-                    .css({
+                $("#thing2").show();
+                    /*.css({
                     'left' : '0px',
                     'top' : '250px',
-                });
+                });*/
 
                 if (!$("#thing2").is(':animated')) {
                     animateThis($("#thing2"), 2000);
-                }                
-                break;
-            case 2:
+                }
 
+                var finishCheckInterval = setInterval(function() {
+        
+                    if (!isFinished()) {
+
+                        isFinished();
+
+                    } else {
+
+                        clearInterval(finishCheckInterval);
+                        console.log("finishCheckInterval cleared");
+                        clearInterval(crashCheckInterval);
+                        console.log("crashCheckInterval cleared");
+                        $("#area").hide();
+                    
+                        $("#messagebox").show();
+                        $("#message").text("Brávó!");
+                        $("#complevel").text("Teljesített szint: " + level + ".");
+                        $("#remlives").text("Még " + lives + " életed maradt.");
+                        level++;
+                        console.log("level: " + level);
+
+                        $("#nextbtn").click(function() {
+                            $("#messagebox").hide();
+                            levelChoice();
+             
+                        })
+                    }
+
+                }, 200);
+
+                var crashCheckInterval = setInterval(function() {
+
+                    if (!isCrashed()) {
+
+                        isCrashed();
+
+                    } else {
+
+                        clearInterval(finishCheckInterval);
+                        console.log("finishCheckInterval cleared");
+                        clearInterval(crashCheckInterval);
+                        console.log("crashCheckInterval cleared");
+                        $("#area").hide();
+
+                        $("#messagebox").show();
+                        $("#message").text("Jaj!");
+                        lives--;
+                        console.log("lives: " + lives);
+                        $("#remlives").text("Még " + lives + " életed maradt.");
+
+                        $("#nextbtn").click(function() {
+                        $("#messagebox").hide();
+                        levelChoice();
+             
+                        })
+
+                    }
+                    
+                }, 200);
+
+                break;
+                
+            case 2:
+                $("#area").show();
+                $("#player").show();
+                $("#player").css({
+                    'left' : '0px',
+                    'top' : '0px',
+                    /*'background-color' : 'red'*/
+                });
+                $("#finish").show();
+                $("#thing2").show();
+                if (!$("#thing2").is(':animated')) {
+                    animateThis($("#thing2"), 2000);
+                }
+
+                $("#thing3").show();
+                if (!$("#thing3").is(':animated')) {
+                    animateThis($("#thing3"), 1500);
+                }
+
+                break;
 
         }
 
@@ -245,74 +325,20 @@ var main = function() {
 
     $("#startbtn").click(function() {
         $("#welcome").hide();
+        levelChoice();
+
+        /*
         $("#area").show();
         $("#player").show();
         $("#finish").show();
         $("#thing2").show();
-        animateThis($("#thing2"), 2000);
+        animateThis($("#thing2"), 2000);*/
     });
 
 
 
 
-    var finishCheckInterval = setInterval(function() {
-        
-        if (!isFinished()) {
 
-            isFinished();
-
-        } else {
-
-            clearInterval(finishCheckInterval);
-            console.log("finishCheckInterval cleared");
-            clearInterval(crashCheckInterval);
-            console.log("crashCheckInterval cleared");
-            $("#area").hide();
-        
-            $("#messagebox").show();
-            $("#message").text("Brávó!");
-            $("#complevel").text("Teljesített szint: " + level + ".");
-            $("#remlives").text("Még " + lives + " életed maradt.");
-            level++;
-            console.log("level: " + level);
-
-            $("#nextbtn").click(function() {
-                $("#messagebox").hide();
-                levelChoice();
- 
-            })
-        }
-
-    }, 200);
-
-    var crashCheckInterval = setInterval(function() {
-
-        if (!isCrashed()) {
-
-            isCrashed();
-
-        } else {
-
-            clearInterval(finishCheckInterval);
-            console.log("finishCheckInterval cleared");
-            clearInterval(crashCheckInterval);
-            console.log("crashCheckInterval cleared");
-            $("#area").hide();
-
-            $("#messagebox").show();
-            $("#message").text("Jaj!");
-            lives--;
-            console.log("lives: " + lives);
-            $("#remlives").text("Még " + lives + " életed maradt.");
-
-            $("#nextbtn").click(function() {
-            $("#messagebox").hide();
-            levelChoice();
- 
-            })
-
-        }
-    })                          
 
 
     //animateThis($('#thing1'), 2000);
@@ -331,6 +357,7 @@ var main = function() {
 
     // talán lehetne úgy, hogy a nextbtn-re történő klikkeléskor mindig meghívunk egy 
     // switchet, ami a level változó alapján eldönti, hogy melyik pálya következzen
+    // LEVEL 1-RE VALÓ VISSZATÉRÉSKOR IS KELL A CHECKPOSITION
     // LEVEL 2 HOZZÁADÁSA A SWITCHHEZ + TEST
     // FÜGGVÉNYEK MEGHÍVÁSÁNAK HARMONIZÁLÁSA
 
